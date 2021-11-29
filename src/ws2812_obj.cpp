@@ -1,3 +1,7 @@
+
+#include <ws2812_obj.h>
+
+
 ws2812_obj::ws2812_obj(int _Start, int _Ende)
 
 {
