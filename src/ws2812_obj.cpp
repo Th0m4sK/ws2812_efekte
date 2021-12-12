@@ -121,15 +121,13 @@ LED.Color1=_color;
 void ws2812_obj::setColor2(uint32_t _color){
 LED.Color2=_color;
 }
-int ws2812_obj::setStatus(Adafruit_NeoPixel &strip,uint32_t *bak,LEDSTATUS _status,uint32_t _color1,uint32_t _color2,unsigned long wait){
+int ws2812_obj::setStatus(Adafruit_NeoPixel &strip,LEDSTATUS _status,uint32_t _color1,uint32_t _color2,unsigned long wait){
     LED.Color1=_color1;
     LED.Color2=_color2;
     LED.status=_status;
     init();
     int ret=0;
-    for (unsigned long long i=0;i<sizeof(bak);i++){
-        strip.setPixelColor(i, bak[i]);
-    }
+   
     if (_status==CLEAR){setLEDColor(strip,0x0000);}
     if (_status==COLORWIPE_F){ret=colorWipe(strip,LED.Color1,forward,wait);}
     if (_status==COLORWIPE_B){ret=colorWipe(strip,LED.Color1,backward,wait);}
@@ -137,9 +135,7 @@ int ws2812_obj::setStatus(Adafruit_NeoPixel &strip,uint32_t *bak,LEDSTATUS _stat
      if (_status==COLORPOINT_B){ret=colorPoint(strip,LED.Color1,LED.Color2,backward,wait);}
       if (_status==COLORSWITCH){ret=colorSwitch(strip,LED.Color1,LED.Color2,wait);}
       if (_status==SETCOLOR){setLEDColor(strip,LED.Color1);}
-      for (unsigned long long i=0;i<sizeof(bak);i++){
-        bak[i]= strip.getPixelColor(i);
-    }
+  
       return ret;
 
 }

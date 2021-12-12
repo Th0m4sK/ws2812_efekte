@@ -59,7 +59,7 @@ int colorSwitch(Adafruit_NeoPixel &strip,uint32_t FirstColor, uint32_t SecondCol
 void setLEDColor(Adafruit_NeoPixel &strip,   uint32_t color);
 void setColor1(uint32_t _color);
 void setColor2(uint32_t _color);
-int setStatus(Adafruit_NeoPixel &strip,uint32_t *bak,LEDSTATUS _status,uint32_t _color1,uint32_t _color2,unsigned long wait);
+int setStatus(Adafruit_NeoPixel &strip,LEDSTATUS _status,uint32_t _color1,uint32_t _color2,unsigned long wait);
     
 };
 
